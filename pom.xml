@@ -49,7 +49,7 @@
     <assertj.version>3.24.2</assertj.version>
     <junit-jupiter.version>5.10.0</junit-jupiter.version>
     <lombok.version>1.18.28</lombok.version>
-    <spotbugs.version>4.7.3</spotbugs.version>
+    <spotbugs.version>4.8.0</spotbugs.version>
   </properties>
 
   <modules>
@@ -92,7 +92,14 @@
         <plugin>
           <groupId>com.github.spotbugs</groupId>
           <artifactId>spotbugs-maven-plugin</artifactId>
-          <version>4.7.3.5</version>
+          <version>4.7.3.6</version>
+          <dependencies>
+            <dependency>
+              <groupId>com.github.spotbugs</groupId>
+              <artifactId>spotbugs</artifactId>
+              <version>${spotbugs.version}</version>
+            </dependency>
+          </dependencies>
           <executions>
             <execution>
               <id>spotbugs</id>
