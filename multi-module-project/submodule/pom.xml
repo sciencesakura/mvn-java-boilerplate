@@ -17,54 +17,40 @@
     The description of submodule.
   </description>
 
-  <dependencies>
-    <dependency>
-      <groupId>com.github.spotbugs</groupId>
-      <artifactId>spotbugs-annotations</artifactId>
-      <version>${spotbugs.version}</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.projectlombok</groupId>
-      <artifactId>lombok</artifactId>
-      <version>${lombok.version}</version>
-      <scope>provided</scope>
-    </dependency>
+  <properties>
+    <main.class>com.sciencesakura.Main</main.class>
+  </properties>
 
-    <dependency>
-      <groupId>org.assertj</groupId>
-      <artifactId>assertj-core</artifactId>
-      <version>${assertj.version}</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter</artifactId>
-      <version>${junit-jupiter.version}</version>
-      <scope>test</scope>
-    </dependency>
+  <dependencies>
   </dependencies>
 
   <build>
     <finalName>${project.artifactId}</finalName>
+
     <plugins>
       <plugin>
         <artifactId>maven-checkstyle-plugin</artifactId>
         <configuration>
-          <propertyExpansion>org.checkstyle.google.suppressionfilter.config=${project.basedir}/../config/checkstyle/suppressions.xml</propertyExpansion>
+          <propertyExpansion>
+            org.checkstyle.google.suppressionfilter.config=${project.basedir}/../config/checkstyle/suppressions.xml
+          </propertyExpansion>
         </configuration>
       </plugin>
       <plugin>
-        <artifactId>maven-compiler-plugin</artifactId>
+        <artifactId>maven-jar-plugin</artifactId>
         <configuration>
-          <annotationProcessorPaths>
-            <annotationProcessorPath>
-              <groupId>org.projectlombok</groupId>
-              <artifactId>lombok</artifactId>
-              <version>${lombok.version}</version>
-            </annotationProcessorPath>
-          </annotationProcessorPaths>
+          <archive>
+            <manifest>
+              <mainClass>${main.class}</mainClass>
+            </manifest>
+          </archive>
         </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-javadoc-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <artifactId>maven-source-plugin</artifactId>
       </plugin>
       <plugin>
         <groupId>com.github.spotbugs</groupId>
@@ -76,9 +62,6 @@
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>exec-maven-plugin</artifactId>
-        <configuration>
-          <mainClass>com.sciencesakura.App</mainClass>
-        </configuration>
       </plugin>
       <plugin>
         <groupId>org.jacoco</groupId>
@@ -92,8 +75,17 @@
       <plugin>
         <artifactId>maven-checkstyle-plugin</artifactId>
         <configuration>
-          <propertyExpansion>org.checkstyle.google.suppressionfilter.config=${project.basedir}/../config/checkstyle/suppressions.xml</propertyExpansion>
+          <propertyExpansion>
+            org.checkstyle.google.suppressionfilter.config=${project.basedir}/../config/checkstyle/suppressions.xml
+          </propertyExpansion>
         </configuration>
+        <reportSets>
+          <reportSet>
+            <reports>
+              <report>checkstyle</report>
+            </reports>
+          </reportSet>
+        </reportSets>
       </plugin>
       <plugin>
         <artifactId>maven-javadoc-plugin</artifactId>
