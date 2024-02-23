@@ -113,7 +113,6 @@
           </configuration>
           <executions>
             <execution>
-              <id>checkstyle</id>
               <phase>validate</phase>
               <goals>
                 <goal>check</goal>
@@ -151,6 +150,7 @@
             <archive>
               <manifest>
                 <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                <mainClass>${main.class}</mainClass>
               </manifest>
             </archive>
           </configuration>
@@ -209,7 +209,6 @@
           </dependencies>
           <executions>
             <execution>
-              <id>spotbugs</id>
               <phase>test</phase>
               <goals>
                 <goal>check</goal>
