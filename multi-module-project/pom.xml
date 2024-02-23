@@ -43,10 +43,12 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>21</maven.compiler.source>
-    <maven.compiler.target>21</maven.compiler.target>
+    <java.version>21</java.version>
+    <maven.compiler.source>${java.version}</maven.compiler.source>
+    <maven.compiler.target>${java.version}</maven.compiler.target>
 
     <!-- tool versions -->
+    <maven.minimum.version>3.6.3</maven.minimum.version>
     <checkstyle.version>10.12.6</checkstyle.version>
     <spotbugs.version>4.8.3</spotbugs.version>
 
@@ -54,12 +56,14 @@
     <exec.maven.plugin.version>3.1.1</exec.maven.plugin.version>
     <jacoco.maven.plugin.version>0.8.11</jacoco.maven.plugin.version>
     <maven.checkstyle.plugin.version>3.3.1</maven.checkstyle.plugin.version>
+    <maven.enforcer.plugin.version>3.4.1</maven.enforcer.plugin.version>
     <maven.jar.plugin.version>3.3.0</maven.jar.plugin.version>
     <maven.javadoc.plugin.version>3.6.3</maven.javadoc.plugin.version>
     <maven.project.info.reports.plugin.version>3.5.0</maven.project.info.reports.plugin.version>
     <maven.source.plugin.version>3.3.0</maven.source.plugin.version>
     <maven.surefire.report.plugin.version>3.2.3</maven.surefire.report.plugin.version>
     <spotbugs.maven.plugin.version>4.8.2.0</spotbugs.maven.plugin.version>
+    <versions.maven.plugin.version>2.16.2</versions.maven.plugin.version>
 
     <!-- dependency versions -->
     <junit.jupiter.version>5.10.1</junit.jupiter.version>
@@ -113,6 +117,28 @@
               <phase>validate</phase>
               <goals>
                 <goal>check</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-enforcer-plugin</artifactId>
+          <version>${maven.enforcer.plugin.version}</version>
+          <configuration>
+            <rules>
+              <requireJavaVersion>
+                <version>${java.version}</version>
+              </requireJavaVersion>
+              <requireMavenVersion>
+                <version>${maven.minimum.version}</version>
+              </requireMavenVersion>
+            </rules>
+          </configuration>
+          <executions>
+            <execution>
+              <goals>
+                <goal>enforce</goal>
               </goals>
             </execution>
           </executions>
@@ -200,6 +226,11 @@
           </configuration>
         </plugin>
         <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>versions-maven-plugin</artifactId>
+          <version>${versions.maven.plugin.version}</version>
+        </plugin>
+        <plugin>
           <groupId>org.jacoco</groupId>
           <artifactId>jacoco-maven-plugin</artifactId>
           <version>${jacoco.maven.plugin.version}</version>
@@ -214,5 +245,16 @@
         </plugin>
       </plugins>
     </pluginManagement>
+
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-enforcer-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>versions-maven-plugin</artifactId>
+      </plugin>
+    </plugins>
   </build>
 </project>
