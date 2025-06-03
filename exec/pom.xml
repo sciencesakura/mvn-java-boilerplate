@@ -50,14 +50,15 @@
     <maven-compiler-plugin.version>3.14.0</maven-compiler-plugin.version>
     <maven-enforcer-plugin.version>3.5.0</maven-enforcer-plugin.version>
     <maven-shade-plugin.version>3.6.0</maven-shade-plugin.version>
-    <exec-maven-plugin.version>3.5.0</exec-maven-plugin.version>
-    <native-maven-plugin.version>0.10.5</native-maven-plugin.version>
-    <spotbugs-maven-plugin.version>4.9.2.0</spotbugs-maven-plugin.version>
+    <exec-maven-plugin.version>3.5.1</exec-maven-plugin.version>
+    <native-maven-plugin.version>0.10.6</native-maven-plugin.version>
+    <spotbugs-maven-plugin.version>4.9.3.0</spotbugs-maven-plugin.version>
+    <versions-maven-plugin.version>2.18.0</versions-maven-plugin.version>
 
     <!-- dependency versions -->
-    <checkstyle.version>10.21.3</checkstyle.version>
-    <junit.jupiter.version>5.12.0</junit.jupiter.version>
-    <picocli.version>4.7.6</picocli.version>
+    <checkstyle.version>10.25.0</checkstyle.version>
+    <junit.jupiter.version>5.13.0</junit.jupiter.version>
+    <picocli.version>4.7.7</picocli.version>
   </properties>
 
   <dependencies>
@@ -120,6 +121,9 @@
             <requireJavaVersion>
               <version>${java.version}</version>
             </requireJavaVersion>
+            <requireMavenVersion>
+              <version>[3.6.3,)</version>
+            </requireMavenVersion>
           </rules>
         </configuration>
         <executions>
@@ -153,6 +157,11 @@
             <phase>test</phase>
           </execution>
         </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>versions-maven-plugin</artifactId>
+        <version>${versions-maven-plugin.version}</version>
       </plugin>
     </plugins>
   </build>
