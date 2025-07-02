@@ -46,13 +46,13 @@
 
     <!-- plugin versions -->
     <maven-checkstyle-plugin.version>3.6.0</maven-checkstyle-plugin.version>
-    <maven-enforcer-plugin.version>3.5.0</maven-enforcer-plugin.version>
-    <spotbugs-maven-plugin.version>4.9.3.0</spotbugs-maven-plugin.version>
+    <maven-enforcer-plugin.version>3.6.0</maven-enforcer-plugin.version>
+    <spotbugs-maven-plugin.version>4.9.3.2</spotbugs-maven-plugin.version>
     <versions-maven-plugin.version>2.18.0</versions-maven-plugin.version>
 
     <!-- dependency versions -->
-    <checkstyle.version>10.25.0</checkstyle.version>
-    <junit.jupiter.version>5.13.0</junit.jupiter.version>
+    <checkstyle.version>10.26.1</checkstyle.version>
+    <junit.jupiter.version>5.13.2</junit.jupiter.version>
   </properties>
 
   <dependencies>
