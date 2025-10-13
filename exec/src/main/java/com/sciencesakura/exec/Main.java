@@ -25,7 +25,7 @@ public class Main implements Runnable {
    *
    * @param args the command-line arguments
    */
-  public static void main(String[] args) {
+  static void main(String[] args) {
     new CommandLine(new Main()).execute(args);
   }
 

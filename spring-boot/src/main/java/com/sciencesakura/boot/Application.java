@@ -11,7 +11,7 @@ public class Application {
    *
    * @param args Command line arguments (not used).
    */
-  public static void main(String[] args) {
+  static void main(String[] args) {
     SpringApplication.run(Application.class, args);
   }
 }
