@@ -7,7 +7,7 @@
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>3.5.6</version>
+    <version>3.5.7</version>
   </parent>
   <groupId>com.sciencesakura</groupId>
   <artifactId>spring-boot</artifactId>
@@ -54,11 +54,11 @@
     <maven-dependency-plugin.version>3.9.0</maven-dependency-plugin.version>
     <maven-enforcer-plugin.version>3.6.2</maven-enforcer-plugin.version>
     <maven-surefire-plugin.version>3.5.4</maven-surefire-plugin.version>
-    <spotbugs-maven-plugin.version>4.9.6.0</spotbugs-maven-plugin.version>
+    <spotbugs-maven-plugin.version>4.9.8.1</spotbugs-maven-plugin.version>
     <versions-maven-plugin.version>2.19.1</versions-maven-plugin.version>
 
     <!-- dependency versions -->
-    <checkstyle.version>12.0.1</checkstyle.version>
+    <checkstyle.version>12.1.2</checkstyle.version>
   </properties>
 
   <dependencies>

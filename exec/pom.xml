@@ -50,14 +50,14 @@
     <maven-compiler-plugin.version>3.14.1</maven-compiler-plugin.version>
     <maven-enforcer-plugin.version>3.6.2</maven-enforcer-plugin.version>
     <maven-shade-plugin.version>3.6.1</maven-shade-plugin.version>
-    <exec-maven-plugin.version>3.6.1</exec-maven-plugin.version>
-    <native-maven-plugin.version>0.11.1</native-maven-plugin.version>
-    <spotbugs-maven-plugin.version>4.9.6.0</spotbugs-maven-plugin.version>
+    <exec-maven-plugin.version>3.6.2</exec-maven-plugin.version>
+    <native-maven-plugin.version>0.11.3</native-maven-plugin.version>
+    <spotbugs-maven-plugin.version>4.9.8.1</spotbugs-maven-plugin.version>
     <versions-maven-plugin.version>2.19.1</versions-maven-plugin.version>
 
     <!-- dependency versions -->
-    <checkstyle.version>12.0.1</checkstyle.version>
-    <junit.jupiter.version>6.0.0</junit.jupiter.version>
+    <checkstyle.version>12.1.2</checkstyle.version>
+    <junit.jupiter.version>6.0.1</junit.jupiter.version>
     <picocli.version>4.7.7</picocli.version>
   </properties>
 
