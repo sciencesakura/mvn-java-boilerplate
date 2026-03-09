@@ -1,22 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>3.5.7</version>
+    <version>4.0.3</version>
   </parent>
   <groupId>com.sciencesakura</groupId>
   <artifactId>spring-boot</artifactId>
   <version>1.0.0-SNAPSHOT</version>
   <name>spring-boot</name>
-  <description>
-    A boilerplate for Java projects using Maven.
-  </description>
+  <description>A boilerplate for Java projects using Maven.</description>
   <url>https://github.com/sciencesakura/mvn-java-boilerplate</url>
+  <inceptionYear>2023</inceptionYear>
   <organization>
     <name>sciencesakura</name>
     <url>https://www.sciencesakura.com/</url>
@@ -42,6 +40,10 @@
     <system>GitHub</system>
     <url>https://github.com/sciencesakura/mvn-java-boilerplate/issues</url>
   </issueManagement>
+  <ciManagement>
+    <system>GitHub Actions</system>
+    <url>https://github.com/sciencesakura/mvn-java-boilerplate/actions</url>
+  </ciManagement>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -51,14 +53,14 @@
 
     <!-- plugin versions -->
     <maven-checkstyle-plugin.version>3.6.0</maven-checkstyle-plugin.version>
-    <maven-dependency-plugin.version>3.9.0</maven-dependency-plugin.version>
+    <maven-dependency-plugin.version>3.10.0</maven-dependency-plugin.version>
     <maven-enforcer-plugin.version>3.6.2</maven-enforcer-plugin.version>
-    <maven-surefire-plugin.version>3.5.4</maven-surefire-plugin.version>
-    <spotbugs-maven-plugin.version>4.9.8.1</spotbugs-maven-plugin.version>
-    <versions-maven-plugin.version>2.19.1</versions-maven-plugin.version>
+    <maven-surefire-plugin.version>3.5.5</maven-surefire-plugin.version>
+    <spotbugs-maven-plugin.version>4.9.8.2</spotbugs-maven-plugin.version>
+    <versions-maven-plugin.version>2.21.0</versions-maven-plugin.version>
 
     <!-- dependency versions -->
-    <checkstyle.version>12.1.2</checkstyle.version>
+    <checkstyle.version>13.3.0</checkstyle.version>
   </properties>
 
   <dependencies>
@@ -69,11 +71,16 @@
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-web</artifactId>
+      <artifactId>spring-boot-starter-webmvc</artifactId>
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-test</artifactId>
+      <artifactId>spring-boot-starter-webmvc-test</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-core</artifactId>
       <scope>test</scope>
     </dependency>
   </dependencies>
@@ -88,8 +95,6 @@
         <configuration>
           <configLocation>google_checks.xml</configLocation>
           <consoleOutput>true</consoleOutput>
-          <failOnViolation>true</failOnViolation>
-          <linkXRef>false</linkXRef>
           <propertyExpansion>
             org.checkstyle.google.suppressionfilter.config=${project.basedir}/config/checkstyle/suppressions.xml
           </propertyExpansion>
@@ -106,7 +111,7 @@
             <goals>
               <goal>check</goal>
             </goals>
-            <phase>validate</phase>
+            <phase>test</phase>
           </execution>
         </executions>
       </plugin>
@@ -173,6 +178,16 @@
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>versions-maven-plugin</artifactId>
         <version>${versions-maven-plugin.version}</version>
+        <configuration>
+          <ruleSet>
+            <ignoreVersions>
+              <ignoreVersion>
+                <type>regex</type>
+                <version>.+-(alpha|beta|M\d+).*</version>
+              </ignoreVersion>
+            </ignoreVersions>
+          </ruleSet>
+        </configuration>
       </plugin>
       <plugin>
         <groupId>org.springframework.boot</groupId>

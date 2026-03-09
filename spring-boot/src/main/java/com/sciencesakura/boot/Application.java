@@ -3,6 +3,9 @@ package com.sciencesakura.boot;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+/**
+ * An entry point for the Spring Boot application.
+ */
 @SpringBootApplication
 public class Application {
 
