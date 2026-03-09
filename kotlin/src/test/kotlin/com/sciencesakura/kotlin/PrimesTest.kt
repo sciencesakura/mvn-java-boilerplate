@@ -3,6 +3,9 @@ package com.sciencesakura.kotlin
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
+/**
+ * A test class for [isPrime].
+ */
 class PrimesTest {
   @Test
   fun test_isPrime() {

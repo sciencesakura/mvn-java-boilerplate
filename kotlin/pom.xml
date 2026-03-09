@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
@@ -8,10 +7,9 @@
   <artifactId>kotlin</artifactId>
   <version>1.0.0-SNAPSHOT</version>
   <name>Kotlin</name>
-  <description>
-    A boilerplate for Java projects using Maven.
-  </description>
+  <description>A boilerplate for Java projects using Maven.</description>
   <url>https://github.com/sciencesakura/mvn-java-boilerplate</url>
+  <inceptionYear>2023</inceptionYear>
   <organization>
     <name>sciencesakura</name>
     <url>https://www.sciencesakura.com/</url>
@@ -37,18 +35,26 @@
     <system>GitHub</system>
     <url>https://github.com/sciencesakura/mvn-java-boilerplate/issues</url>
   </issueManagement>
+  <ciManagement>
+    <system>GitHub Actions</system>
+    <url>https://github.com/sciencesakura/mvn-java-boilerplate/actions</url>
+  </ciManagement>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <java.version>21</java.version>
-    <kotlin.version>2.2.21</kotlin.version>
+    <java.version>25</java.version>
     <maven.compiler.release>${java.version}</maven.compiler.release>
 
     <!-- plugin versions -->
+    <maven-bundle-plugin.version>6.0.2</maven-bundle-plugin.version>
     <maven-enforcer-plugin.version>3.6.2</maven-enforcer-plugin.version>
+    <maven-jar-plugin.version>3.5.0</maven-jar-plugin.version>
     <ktlint-maven-plugin.version>3.5.0</ktlint-maven-plugin.version>
-    <versions-maven-plugin.version>2.19.1</versions-maven-plugin.version>
+    <versions-maven-plugin.version>2.21.0</versions-maven-plugin.version>
+
+    <!-- dependency versions -->
+    <kotlin.version>2.3.10</kotlin.version>
   </properties>
 
   <dependencyManagement>
@@ -76,8 +82,6 @@
   </dependencies>
 
   <build>
-    <sourceDirectory>${project.basedir}/src/main/kotlin</sourceDirectory>
-    <testSourceDirectory>${project.basedir}/src/test/kotlin</testSourceDirectory>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -102,6 +106,19 @@
         </executions>
       </plugin>
       <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>${maven-jar-plugin.version}</version>
+        <configuration>
+          <archive>
+            <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
+            <manifest>
+              <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+            </manifest>
+          </archive>
+        </configuration>
+      </plugin>
+      <plugin>
         <groupId>com.github.gantsign.maven</groupId>
         <artifactId>ktlint-maven-plugin</artifactId>
         <version>${ktlint-maven-plugin.version}</version>
@@ -122,19 +139,50 @@
         </executions>
       </plugin>
       <plugin>
+        <groupId>org.apache.felix</groupId>
+        <artifactId>maven-bundle-plugin</artifactId>
+        <version>${maven-bundle-plugin.version}</version>
+        <extensions>true</extensions>
+        <configuration>
+          <instructions>
+            <Import-Package>!java.*,*</Import-Package>
+            <Bundle-DocURL>${project.url}</Bundle-DocURL>
+          </instructions>
+        </configuration>
+        <executions>
+          <execution>
+            <goals>
+              <goal>manifest</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
         <groupId>org.jetbrains.kotlin</groupId>
         <artifactId>kotlin-maven-plugin</artifactId>
         <version>${kotlin.version}</version>
         <extensions>true</extensions>
         <configuration>
-          <jvmTarget>${java.version}</jvmTarget>
+          <jvmTarget>${maven.compiler.release}</jvmTarget>
         </configuration>
       </plugin>
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>versions-maven-plugin</artifactId>
         <version>${versions-maven-plugin.version}</version>
+        <configuration>
+          <ruleSet>
+            <ignoreVersions>
+              <ignoreVersion>
+                <type>regex</type>
+                <version>.+-(alpha|beta|M\d+).*</version>
+              </ignoreVersion>
+            </ignoreVersions>
+          </ruleSet>
+        </configuration>
       </plugin>
     </plugins>
+    <sourceDirectory>${project.basedir}/src/main/kotlin</sourceDirectory>
+    <testSourceDirectory>${project.basedir}/src/test/kotlin</testSourceDirectory>
   </build>
 </project>
