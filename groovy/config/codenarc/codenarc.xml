@@ -1,12 +1,14 @@
 <ruleset xmlns="http://codenarc.org/ruleset/1.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://codenarc.org/ruleset/1.0 https://raw.githubusercontent.com/CodeNarc/CodeNarc/v3.6.0/src/main/resources/ruleset-schema.xsd">
+         xsi:schemaLocation="http://codenarc.org/ruleset/1.0 https://raw.githubusercontent.com/CodeNarc/CodeNarc/v3.7.0/src/main/resources/ruleset-schema.xsd">
 
   <ruleset-ref path="rulesets/basic.xml"/>
 
   <ruleset-ref path="rulesets/braces.xml">
     <exclude name="IfStatementBraces"/>
   </ruleset-ref>
+
+  <ruleset-ref path="rulesets/comments.xml"/>
 
   <ruleset-ref path="rulesets/convention.xml">
     <exclude name="CompileStatic"/>
@@ -46,10 +48,10 @@
   <ruleset-ref path="rulesets/imports.xml"/>
 
   <ruleset-ref path="rulesets/naming.xml">
-    <exclude name="MethodName"/>
+    <rule-config name="MethodName">
+      <property name="doNotApplyToClassNames" value="*Spec,*Test"/>
+    </rule-config>
   </ruleset-ref>
-
-  <ruleset-ref path="rulesets/size.xml"/>
 
   <ruleset-ref path="rulesets/unnecessary.xml"/>
 

@@ -5,7 +5,7 @@ package com.sciencesakura.groovy
  */
 final class Primes {
 
-  private static final WHEEL = [4, 2, 4, 2, 4, 6, 2, 6]
+  private static final List<Integer> WHEEL = [4, 2, 4, 2, 4, 6, 2, 6]
 
   private Primes() {
   }
