@@ -7,6 +7,9 @@ import java.io.StringWriter;
 import org.junit.jupiter.api.Test;
 import picocli.CommandLine;
 
+/**
+ * A test class for {@link Main}.
+ */
 class MainTest {
 
   @Test
