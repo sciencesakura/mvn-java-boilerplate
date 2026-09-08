@@ -16,6 +16,7 @@ final class Primes {
    * @param n the number to test
    * @return {@code true} if the number is prime, {@code false} otherwise
    */
+  @SuppressWarnings('IfStatementBraces')
   static boolean isPrime(int n) {
     if (n == 2 || n == 3 || n == 5) return true
     if (n < 2 || n % 2 == 0 || n % 3 == 0 || n % 5 == 0) return false

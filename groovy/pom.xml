@@ -47,16 +47,16 @@
     <maven.compiler.release>${java.version}</maven.compiler.release>
 
     <!-- plugin versions -->
-    <maven-bundle-plugin.version>6.0.2</maven-bundle-plugin.version>
-    <maven-enforcer-plugin.version>3.6.2</maven-enforcer-plugin.version>
-    <maven-surefire-plugin.version>3.5.5</maven-surefire-plugin.version>
-    <maven-jar-plugin.version>3.5.0</maven-jar-plugin.version>
-    <codenarc-maven-plugin.version>1.0.1</codenarc-maven-plugin.version>
-    <gmavenplus-plugin.version>4.3.1</gmavenplus-plugin.version>
+    <maven-bundle-plugin.version>6.1.2</maven-bundle-plugin.version>
+    <maven-enforcer-plugin.version>3.6.3</maven-enforcer-plugin.version>
+    <maven-surefire-plugin.version>3.6.0</maven-surefire-plugin.version>
+    <maven-jar-plugin.version>3.5.1</maven-jar-plugin.version>
+    <codenarc-maven-plugin.version>1.0.2</codenarc-maven-plugin.version>
+    <gmavenplus-plugin.version>5.1.0</gmavenplus-plugin.version>
     <versions-maven-plugin.version>2.21.0</versions-maven-plugin.version>
 
     <!-- dependency versions -->
-    <groovy.version>5.0.4</groovy.version>
+    <groovy.version>5.1.2</groovy.version>
     <spock.version>2.4-groovy-5.0</spock.version>
   </properties>
 
@@ -103,7 +103,7 @@
               <version>${java.version}</version>
             </requireJavaVersion>
             <requireMavenVersion>
-              <version>[3.6.3,)</version>
+              <version>[3.8.9,)</version>
             </requireMavenVersion>
           </rules>
         </configuration>
@@ -158,7 +158,6 @@
         <extensions>true</extensions>
         <configuration>
           <instructions>
-            <Import-Package>!java.*,*</Import-Package>
             <Bundle-DocURL>${project.url}</Bundle-DocURL>
           </instructions>
         </configuration>
@@ -201,7 +200,7 @@
             <ignoreVersions>
               <ignoreVersion>
                 <type>regex</type>
-                <version>.+-(alpha|beta|M\d+).*</version>
+                <version>.+-(alpha|beta|M\d+|RC).*</version>
               </ignoreVersion>
             </ignoreVersions>
           </ruleSet>
