@@ -45,7 +45,7 @@
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <java.version>25</java.version>
     <maven.compiler.release>${java.version}</maven.compiler.release>
-    <main.class>com.sciencesakura.exec.Main</main.class>
+    <main.class>com.sciencesakura.exec.App</main.class>
 
     <!-- plugin versions -->
     <maven-checkstyle-plugin.version>3.6.0</maven-checkstyle-plugin.version>
@@ -56,6 +56,7 @@
     <exec-maven-plugin.version>3.6.3</exec-maven-plugin.version>
     <native-maven-plugin.version>1.1.12</native-maven-plugin.version>
     <spotbugs-maven-plugin.version>4.10.4.1</spotbugs-maven-plugin.version>
+    <templating-maven-plugin.version>3.1.0</templating-maven-plugin.version>
     <versions-maven-plugin.version>2.21.0</versions-maven-plugin.version>
 
     <!-- dependency versions -->
@@ -168,6 +169,18 @@
               <goal>check</goal>
             </goals>
             <phase>test</phase>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>templating-maven-plugin</artifactId>
+        <version>${templating-maven-plugin.version}</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>filter-sources</goal>
+            </goals>
           </execution>
         </executions>
       </plugin>

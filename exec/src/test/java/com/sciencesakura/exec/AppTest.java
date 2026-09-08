@@ -8,14 +8,14 @@ import org.junit.jupiter.api.Test;
 import picocli.CommandLine;
 
 /**
- * A test class for {@link Main}.
+ * A test class for {@link App}.
  */
-class MainTest {
+class AppTest {
 
   @Test
   void when_n_is_default_value() {
     var actual = new StringWriter();
-    var command = new CommandLine(new Main());
+    var command = new CommandLine(new App());
     command.setOut(new PrintWriter(actual));
     var exitCode = command.execute();
     assertEquals(0, exitCode);
@@ -36,7 +36,7 @@ class MainTest {
   @Test
   void when_n_is_specified() {
     var actual = new StringWriter();
-    var command = new CommandLine(new Main());
+    var command = new CommandLine(new App());
     command.setOut(new PrintWriter(actual));
     var exitCode = command.execute("-n", "5");
     assertEquals(0, exitCode);

@@ -11,8 +11,13 @@ import picocli.CommandLine.Spec;
 /**
  * The main class.
  */
-@Command(name = "exec", description = "Generate prime numbers", mixinStandardHelpOptions = true)
-public class Main implements Runnable {
+@Command(name = AppInfo.NAME,
+    version = AppInfo.VERSION,
+    description = "Generate prime numbers",
+    mixinStandardHelpOptions = true,
+    sortOptions = false,
+    sortSynopsis = false)
+public class App implements Runnable {
 
   @Spec
   private CommandSpec spec;
@@ -26,7 +31,7 @@ public class Main implements Runnable {
    * @param args the command-line arguments
    */
   static void main(String[] args) {
-    new CommandLine(new Main()).execute(args);
+    new CommandLine(new App()).execute(args);
   }
 
   @Override
